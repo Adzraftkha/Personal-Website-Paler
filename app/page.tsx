@@ -79,7 +79,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="relative overflow-hidden bg-background">
+    <div className="relative overflow-hidden ">
       <HeroSection
         name={portfolioData.profile.name}
         title={portfolioData.profile.title}

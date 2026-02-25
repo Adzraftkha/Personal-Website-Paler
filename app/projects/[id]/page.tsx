@@ -148,7 +148,7 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <div className="relative min-h-[calc(100vh-80px)] overflow-hidden bg-background">
+      <div className="relative min-h-[calc(100vh-80px)] overflow-hidden ">
         <div className="flex min-h-[calc(100vh-80px)] flex-col items-center justify-center px-4">
           <h1 className="mb-4 text-4xl font-bold text-foreground">Project not found</h1>
           <Link
@@ -163,7 +163,7 @@ export default function ProjectDetailPage() {
   }
 
   return (
-    <div className="relative overflow-hidden bg-background min-h-[calc(100vh-80px)]">
+    <div className="relative overflow-hidden min-h-[calc(100vh-80px)]">
       <section className="px-4 py-16 md:px-6">
         <div className="mx-auto max-w-4xl">
           {/* Back Button */}

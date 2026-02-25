@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="relative overflow-hidden bg-background min-h-[calc(100vh-80px)]">
+    <div className="relative overflow-hidden  min-h-[calc(100vh-80px)]">
       <section className="px-4 py-16 md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
           {/* Desktop: Two-column (Get in Touch left, Quick Message right) */}
