@@ -40,10 +40,7 @@ export function HeroSection({ name, title, bio, profileImage }: HeroSectionProps
       initial="hidden"
       animate="visible"
     >
-      <div className="absolute inset-0 z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-primary/20 blur-3xl dark:bg-primary/10" />
-        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/15 blur-3xl dark:bg-primary/5" />
-      </div>
+
 
       <div className="mx-auto max-w-6xl w-full">
         <div className="grid gap-8 md:gap-12 md:grid-cols-2 items-center">

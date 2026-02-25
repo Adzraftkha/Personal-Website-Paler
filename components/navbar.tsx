@@ -35,7 +35,7 @@ export function Navbar() {
   return (
     <>
       {/* Desktop Navbar - Floating Glassmorphism */}
-      <div className="sticky top-0 z-40 hidden md:flex justify-center px-6 py-3">
+      <div className="fixed top-0 z-40 hidden md:flex justify-center mx-auto text-center px-6 py-3 w-full">
         <nav className="flex items-center gap-1 rounded-full border border-border/50 bg-background/60 backdrop-blur-xl px-2 py-1.5 shadow-lg shadow-black/5">
           {/* Brand */}
           <Link
