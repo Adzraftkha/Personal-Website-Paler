@@ -19,16 +19,16 @@ export interface IContactInfo {
 
 // Update with your actual contact information
 export const contactInfo: IContactInfo = {
-  email: "your.email@example.com",
-  phone: "+1 (555) 123-4567",
-  location: "San Francisco, CA",
-  timezone: "PST (UTC-8)",
+  email: "farellelghifari@gmail.com",
+  phone: "+62 813 4686 4377",
+  location: "Jakarta - Indonesia",
+  timezone: "WIB (UTC+7)",
   bio: "Available for consulting and collaboration. Let's build something amazing together!",
   profileImage: "/images/profile.jpg",
   socialLinks: [
     {
       platform: "LinkedIn",
-      url: "https://linkedin.com/in/yourprofile",
+      url: "https://linkedin.com/in/farellelghifari",
       icon: "Linkedin",
       label: "Connect on LinkedIn",
     },
@@ -39,14 +39,14 @@ export const contactInfo: IContactInfo = {
       label: "Follow on GitHub",
     },
     {
-      platform: "Twitter",
-      url: "https://twitter.com/yourprofile",
-      icon: "Twitter",
-      label: "Follow on Twitter",
+      platform: "Instagram",
+      url: "https://instagram.com/farelghifari_",
+      icon: "Instagram",
+      label: "Follow on Instagram",
     },
     {
       platform: "Email",
-      url: "mailto:your.email@example.com",
+      url: "mailto:farellelghifari@gmail.com",
       icon: "Mail",
       label: "Send an email",
     },

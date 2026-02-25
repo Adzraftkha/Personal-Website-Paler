@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
-import { ThemeToggle } from './theme-toggle'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 const navItems = [
   { label: 'Education', href: '/education' },
@@ -125,11 +125,13 @@ export function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu Overlay with blur and fade animation */}
+      {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 top-[56px] z-30 bg-black/30 backdrop-blur-sm md:hidden transition-all duration-300',
-          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          'fixed inset-0 z-30 bg-black/30 backdrop-blur-sm md:hidden transition-all duration-300',
+          isOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
         )}
         onClick={() => setIsOpen(false)}
       />
@@ -137,7 +139,7 @@ export function Navbar() {
       {/* Menu Panel */}
       <div
         className={cn(
-          'fixed top-[56px] left-0 right-0 z-40 md:hidden transition-all duration-300 px-3 mt-3',
+          'fixed top-[72px] left-0 right-0 z-40 md:hidden transition-all duration-300 px-3 mt-4',
           isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
         )}
       >
