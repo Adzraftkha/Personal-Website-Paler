@@ -17,6 +17,7 @@ const navItems = [
 
 export function Footer() {
   const pathname = usePathname()
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -35,11 +36,13 @@ export function Footer() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          name,
           email,
           subject: 'Quick Message from Portfolio',
           message
@@ -47,6 +50,7 @@ export function Footer() {
       })
       if (response.ok) {
         setEmail('')
+        setName('')
         setMessage('')
         alert('Message sent successfully!')
       }
@@ -70,13 +74,13 @@ export function Footer() {
                   <div className="flex items-center gap-3 text-foreground/70 hover:text-foreground transition-colors">
                     <Mail size={18} />
                     <a href="mailto:contact@example.com" className="hover:underline">
-                      contact@example.com
+                      farellelghifari@gmail.com
                     </a>
                   </div>
                   <div className="flex items-center gap-3 text-foreground/70 hover:text-foreground transition-colors">
                     <Phone size={18} />
-                    <a href="tel:+6281234567890" className="hover:underline">
-                      +62 812 3456 7890
+                    <a href="tel:+6281346864377" className="hover:underline">
+                      +62 813 46864377
                     </a>
                   </div>
                   <div className="flex items-start gap-3 text-foreground/70 hover:text-foreground transition-colors">
@@ -102,6 +106,15 @@ export function Footer() {
             <div className="order-1 md:order-2">
               <h3 className="text-lg font-semibold text-foreground mb-4">Quick Message</h3>
               <form onSubmit={handleSubmit} className="space-y-3" suppressHydrationWarning>
+                <input
+                  type="name"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  suppressHydrationWarning
+                  className="w-full px-4 py-2 rounded-lg bg-background border border-border text-foreground placeholder:text-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
                 <input
                   type="email"
                   placeholder="Your email"

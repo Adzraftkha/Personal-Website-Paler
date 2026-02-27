@@ -34,7 +34,7 @@ export function PersonalInfoCard({ contactInfo }: PersonalInfoCardProps) {
     const iconMap: { [key: string]: React.ReactNode } = {
       Linkedin: <Icons.Linkedin size={20} />,
       Github: <Icons.Github size={20} />,
-      Twitter: <Icons.Twitter size={20} />,
+      Instagram: <Icons.Instagram size={20} />,
       Mail: <Icons.Mail size={20} />,
       Dribbble: <Icons.Dribbble size={20} />,
       ExternalLink: <Icons.ExternalLink size={20} />,

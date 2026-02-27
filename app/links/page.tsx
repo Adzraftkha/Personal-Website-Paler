@@ -6,13 +6,13 @@ import { useState, useEffect } from 'react'
 import { contactInfo } from '@/data/contact'
 import { portfolioData } from '@/data/portfolio'
 import * as Icons from 'lucide-react'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 const getIcon = (iconName: string) => {
   const iconMap: { [key: string]: React.ReactNode } = {
     Linkedin: <Icons.Linkedin size={20} />,
     Github: <Icons.Github size={20} />,
-    Twitter: <Icons.Twitter size={20} />,
+    Instagram: <Icons.Instagram size={20} />,
     Mail: <Icons.Mail size={20} />,
     Dribbble: <Icons.Dribbble size={20} />,
     ExternalLink: <Icons.ExternalLink size={20} />,

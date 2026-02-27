@@ -205,9 +205,10 @@ export function AccordionItem({
           {/* Header with Close Button */}
           <button
             onClick={() => setIsExpanded(false)}
-            className="w-full p-6 text-left hover:bg-primary/5 transition-colors border-b border-border"
+            className="w-full p-6 text-left hover:bg-primary/5 transition-colors border-b border-border "
           >
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-5">
+              <img alt='asd'/>
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-foreground">{title}</h3>
                 {subtitle && (
@@ -329,7 +330,16 @@ export function AccordionItem({
 
             {/* Skills Section - Shown in expanded state */}
             {skills.length > 0 && (
+              <>
               <SkillsSection skills={skills} certificationTitle={title} />
+              <div className='flex gap-3'>
+                  <div className='bg-blue-500 w-10 h-10 rounded-full'/>
+                  <div className='bg-blue-500 w-10 h-10 rounded-full'/>
+                  <div className='bg-blue-500 w-10 h-10 rounded-full'/>
+                  <div className='bg-blue-500 w-10 h-10 rounded-full'/>
+                </div>
+              
+              </>
             )}
 
             {/* View Details Button - Shown in expanded state */}
@@ -351,8 +361,9 @@ export function AccordionItem({
 
             {/* Right Sidebar - Supporting Documents - Shown in expanded state */}
             {supportingDocuments && supportingDocuments.length > 0 && (
-              <div className="lg:col-span-1">
+              <div className="lg:col-span-1 flex flex-col justify-between">
                 <SupportingDocuments documents={supportingDocuments} />
+                
               </div>
             )}
           </div>

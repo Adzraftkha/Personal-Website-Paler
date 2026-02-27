@@ -60,6 +60,16 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             <p className="text-xl text-primary font-medium">{project.company}</p>
             <p className="text-sm text-foreground/60">{project.startDate} - {project.endDate}</p>
           </div>
+          <div className='flex gap-2'>
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium gap-4"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -128,7 +138,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             )}
 
             {/* Skills */}
-            {project.tags && project.tags.length > 0 && (
+            {/* {project.tags && project.tags.length > 0 && (
               <GlassCard>
                 <div className="space-y-4">
                   <h2 className="text-2xl font-semibold text-foreground">Technologies & Skills</h2>
@@ -144,7 +154,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   </div>
                 </div>
               </GlassCard>
-            )}
+            )} */}
           </div>
 
           {/* Sidebar */}

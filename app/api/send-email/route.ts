@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     const validatedData: EmailData = emailSchema.parse(body)
 
     const contactEmail =
-      process.env.CONTACT_EMAIL || 'default@example.com'
+      process.env.CONTACT_EMAIL || 'farellelghifari@gmail.com'
 
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',

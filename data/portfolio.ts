@@ -118,13 +118,13 @@ export const portfolioData: IPortfolioData = {
   education: [
     {
       id: "edu-1",
-      school: "Bandung Institute of Technology",
-      degree: "Bachelor of Science",
-      field: "Computer Science",
-      startDate: "2018",
-      endDate: "2022",
-      description: "Specialized in software engineering, web development, and data structures with focus on practical applications.",
-      tags: ["Computer Science", "Web Dev", "Algorithms", "Software Engineering"],
+      school: "Diponegoro University",
+      degree: "Bachelor of Naval Architecture",
+      field: "Engineering",
+      startDate: "2019",
+      endDate: "2024",
+      description: "Specialized in CFD (Computational Fluid Dynamics) on practical applications.",
+      tags: ["Computational Fluid Dynamics", "2D & 3D Design", "Piping", "Drafting"],
       images: ["/images/education/edu-1/img1.jpg", "/images/education/edu-1/img2.jpg", "/images/education/edu-1/img3.jpg"],
       supportingDocuments: [
         {
@@ -219,14 +219,14 @@ export const portfolioData: IPortfolioData = {
     },
     {
       id: "edu-2",
-      school: "Full Stack Development Bootcamp",
-      degree: "Certificate",
-      field: "Full Stack Web Development",
-      startDate: "2022",
-      endDate: "2023",
+      school: "Senior High School 1",
+      degree: "High School",
+      field: "Sciences",
+      startDate: "2016",
+      endDate: "2019",
       description: "Intensive bootcamp focusing on modern web development stack and industry best practices with hands-on projects.",
       tags: ["React", "Node.js", "MongoDB", "Express.js"],
-      images: ["/images/education/edu-2/img1.jpg"],
+      images: ["/images/education/edu-2/img1.jpg", "/images/education/edu-2/img2.jpg", "/images/education/edu-2/img3.jpg"],
       supportingDocuments: [
         {
           id: "doc-edu-2-1",

@@ -110,8 +110,10 @@ export default function DetailPage({ params }: { params: Promise<{ category: str
               )}
 
               {/* Tags */}
-              {(item as any).tags && (item as any).tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 pt-4">
+              
+            </div>
+            {(item as any).tags && (item as any).tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 py-4">
                   {(item as any).tags.map((tag: string) => (
                     <span key={tag} className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
                       {tag}
@@ -119,7 +121,6 @@ export default function DetailPage({ params }: { params: Promise<{ category: str
                   ))}
                 </div>
               )}
-            </div>
 
             {/* Main Content */}
             <div className="grid gap-8 md:grid-cols-3">
