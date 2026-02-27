@@ -40,7 +40,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
   const currentImage = project.images?.[imageIndex] || null
 
   return (
-    <main className="min-h-screen pt-24 pb-16">
+    <main className="min-h-screen pt-33 pb-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Back Button */}
         <Link

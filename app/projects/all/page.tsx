@@ -105,7 +105,7 @@ export default function ProjectsAllPage() {
 
   return (
     <div className="relative overflow-hidden  min-h-[calc(100vh-80px)]">
-      <section className="px-4 py-16 md:px-6">
+      <section className="px-4 py-30 md:px-6">
         <div className="mx-auto max-w-4xl">
           {/* Back Button */}
           <Link

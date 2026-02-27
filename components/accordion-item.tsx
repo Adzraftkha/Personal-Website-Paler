@@ -111,7 +111,10 @@ export function AccordionItem({
           onClick={handleHeaderClick}
           className="group w-full px-4 sm:px-6 py-4 text-left hover:bg-primary/5 transition-colors"
         >
-          <div className="flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className='flex gap-5 w-full '>
+
+            <img alt='asd'/>
+          <div className="flex w-full flex-col gap-3 sm:gap-4 lg:flex-row lg:items-center lg:justify-between">
             {/* Left: Text Content - Full width on mobile, flex on tablet+ */}
             <div className="flex-1 space-y-1">
               <div className="flex items-baseline gap-2 flex-wrap">
@@ -191,6 +194,8 @@ export function AccordionItem({
               className="text-foreground/50 flex-shrink-0 group-hover:text-foreground/70 transition-all self-start sm:self-center"
             />
           </div>
+          </div>
+          
         </button>
       )}
 

@@ -73,7 +73,7 @@ export default function DetailPage({ params }: { params: Promise<{ category: str
 
   return (
     <div className="relative overflow-hidden bg-background min-h-[calc(100vh-80px)]">
-      <section className="px-4 py-16 md:px-6">
+      <section className="px-4 py-16 pt-35 md:px-6">
         <div className="mx-auto max-w-4xl">
           {/* Header */}
           <div className="mb-12 space-y-4">
