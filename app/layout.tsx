@@ -11,8 +11,8 @@ import { SystemThemeSync } from '@/components/system-theme-sync'
 import { Toaster } from 'sonner'
 import './globals.css'
 
-const _geistSans = Geist({ subsets: ['latin'] })
-const _geistMono = Geist_Mono({ subsets: ['latin'] })
+const _geistSans = Geist({ subsets: ['latin'], display: 'swap', })
+const _geistMono = Geist_Mono({ subsets: ['latin'], display: 'swap', })
 
 export const metadata: Metadata = {
   title: 'Farell Elghifari Putratama - Professional Portfolio',
@@ -61,7 +61,7 @@ export default function RootLayout({
           </main>
 
           <div className="absolute inset-0 -z-1 overflow-hidden">
-            <div className="absolute top-30 left-1/18 h-96 w-96 rounded-full bg-primary/20 blur-3xl dark:bg-primary/5" />
+            <div className="absolute top-30 left-1/18 h-96 w-96 rounded-full bg-primary/20 blur-2xl dark:bg-primary/5" />
             <div className="absolute top-50 right-180 h-96 w-96 rounded-full bg-primary/20 blur-3xl dark:bg-primary/5" />
             <div className="absolute top-1/4 right-1/8 h-96 w-96 rounded-full bg-primary/20 blur-3xl dark:bg-primary/5" />
             <div className="absolute top-1/2 left-1/6 h-96 w-96 rounded-full bg-primary/20 blur-3xl dark:bg-primary/5" />
