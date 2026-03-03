@@ -119,7 +119,7 @@ export const portfolioData: IPortfolioData = {
     name: "Farell Elghifari Putratama",
     title: "Multidisciplinary Engineer & Business Leader",
     bio: "Engineering professional with cross-disciplinary expertise spanning naval architecture, energy systems, and business operations. Combining technical acumen with entrepreneurial leadership to deliver impactful solutions across industries.",
-    profileImage: "/images/profile.jpg",
+    profileImage: "/images/profile-picture.png",
   },
   education: [
     {

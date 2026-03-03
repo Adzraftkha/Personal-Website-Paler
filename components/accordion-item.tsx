@@ -111,6 +111,54 @@ export function AccordionItem({
               )}
             </div>
 
+<<<<<<< HEAD
+=======
+            {/* Center: Compact Image Carousel - Full width on mobile (≤640px), beside text on tablet+ (641px+) */}
+            {/* Hide images in preview state - only show when expanded */}
+            {currentImage && isExpanded && (
+              <div className={cn("w-full sm:hidden flex-shrink-0", expandedPreview ? "h-36" : "h-24")}>
+                <div className="relative w-full h-full rounded-lg overflow-hidden border border-border/50 bg-muted">
+                  <Image
+                    src={currentImage}
+                    alt={title}
+                    width={400}
+                    height={expandedPreview ? 144 : 96}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                  {images.length > 1 && (
+                    <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
+                      {imageIndex + 1}/{images.length}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Hidden on mobile, visible on tablet+ */}
+            {/* Hide images in preview state - only show when expanded */}
+            {currentImage && isExpanded && (
+              <div className={cn("hidden sm:block flex-shrink-0", expandedPreview ? "w-48 h-36" : "w-32 h-24")}>
+                <div className="relative w-full h-full rounded-lg overflow-hidden border border-border/50 bg-muted">
+                  <Image
+                    src={currentImage}
+                    alt={title}
+                    width={expandedPreview ? 192 : 128}
+                    height={expandedPreview ? 144 : 96}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                  {images.length > 1 && (
+                    <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
+                      {imageIndex + 1}/{images.length}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Right: Chevron */}
+>>>>>>> c6f2c164842356d1206fe936cef96121859d8bfc
             <ChevronDown
               size={20}
               className={cn(
@@ -216,7 +264,29 @@ export function AccordionItem({
                 <div className="lg:col-span-1">
                   <SupportingDocuments documents={supportingDocuments} />
                 </div>
+<<<<<<< HEAD
               )}
+=======
+              
+              </>
+            )}
+
+            {/* View Details Button - Shown in expanded state */}
+            {category && id && category !== "certification" && (
+              <div className="flex justify-end pt-4 border-t border-foreground/10">
+                <a
+                  href={`/${category}/${id}`}
+                  className="inline-flex items-center gap-2 rounded-lg border border-primary/30 text-primary px-4 py-2 text-sm font-medium transition-all hover:border-primary/50 hover:bg-primary/5"
+                >
+                  View Details
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            )}
+>>>>>>> c6f2c164842356d1206fe936cef96121859d8bfc
             </div>
           </motion.div>
         )}
