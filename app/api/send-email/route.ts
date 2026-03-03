@@ -31,12 +31,12 @@ export async function POST(request: NextRequest) {
       process.env.CONTACT_EMAIL || 'farellelghifari@gmail.com'
 
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>',
+      from: 'Your Personal Website Mail <onboarding@resend.dev>',
       to: contactEmail,
       subject: `New Contact Form Submission: ${validatedData.subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2>New Message from Your Portfolio</h2>
+          <h2>New Message from Your Personal Website</h2>
           <p><strong>Name:</strong> ${validatedData.name}</p>
           <p><strong>Email:</strong> ${validatedData.email}</p>
           <p><strong>Subject:</strong> ${validatedData.subject}</p>

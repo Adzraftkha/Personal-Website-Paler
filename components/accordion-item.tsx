@@ -343,7 +343,7 @@ export function AccordionItem({
             )}
 
             {/* View Details Button - Shown in expanded state */}
-            {category && id && (
+            {category && id && category !== "certification" && (
               <div className="flex justify-end pt-4 border-t border-foreground/10">
                 <a
                   href={`/${category}/${id}`}
