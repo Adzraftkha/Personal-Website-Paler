@@ -155,7 +155,7 @@ export function AccordionItem({
                     width={400}
                     height={expandedPreview ? 144 : 96}
                     className="w-full h-full object-cover"
-                    
+                    priority
                   />
                   {images.length > 1 && (
                     <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
@@ -177,7 +177,7 @@ export function AccordionItem({
                     width={expandedPreview ? 192 : 128}
                     height={expandedPreview ? 144 : 96}
                     className="w-full h-full object-cover"
-                    
+                    priority
                   />
                   {images.length > 1 && (
                     <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
