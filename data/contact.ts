@@ -34,7 +34,7 @@ export const contactInfo: IContactInfo = {
     },
     {
       platform: "GitHub",
-      url: "https://github.com/yourprofile",
+      url: "https://github.com/farelghifari",
       icon: "Github",
       label: "Follow on GitHub",
     },

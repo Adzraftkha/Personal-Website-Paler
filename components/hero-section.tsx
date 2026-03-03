@@ -94,7 +94,7 @@ export function HeroSection({ name, title, bio, profileImage }: HeroSectionProps
                 alt={name}
                 width={400}
                 height={400}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-[center_5%]"
                 priority
               />
             </GlassCard>
