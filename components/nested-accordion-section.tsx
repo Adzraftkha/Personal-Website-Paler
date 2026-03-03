@@ -39,9 +39,9 @@ export function NestedAccordionSection({
     <div className="border-t border-border pt-4">
       <h4 className="text-sm font-semibold text-foreground mb-3">{title}</h4>
       <div className="space-y-2">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <div
-            key={item.id}
+            key={`${item.id ?? item.title}-${index}`}
             className={cn(
               'rounded-lg border p-3 transition-all duration-200 cursor-pointer hover:shadow-md',
               bgColor,
