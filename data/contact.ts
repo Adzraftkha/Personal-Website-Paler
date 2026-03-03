@@ -24,7 +24,7 @@ export const contactInfo: IContactInfo = {
   location: "Jakarta - Indonesia",
   timezone: "WIB (UTC+7)",
   bio: "Available for consulting and collaboration. Let's build something amazing together!",
-  profileImage: "/images/profile.jpg",
+  profileImage: "/images/profile-picture.png",
   socialLinks: [
     {
       platform: "LinkedIn",
