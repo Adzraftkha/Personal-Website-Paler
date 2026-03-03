@@ -13,6 +13,7 @@ export interface IEducation {
   school: string
   degree: string
   field: string
+  logo?: string
   startDate: string
   endDate: string
   description: string
@@ -33,6 +34,7 @@ export interface IExperience {
   achievements: string[]
   tags: string[]
   images: string[]
+  logo?: string
   pdf?: string
   supportingDocuments?: SupportingDocument[]
 }
@@ -47,6 +49,7 @@ export interface IOrganization {
   responsibilities: string[]
   tags: string[]
   images: string[]
+  logo?: string
   supportingDocuments?: SupportingDocument[]
 }
 
@@ -62,6 +65,7 @@ export interface ICertification {
   tags: string[]
   images: string[]
   skills?: string[]
+  logo?: string
   pdf?: string
   supportingDocuments?: SupportingDocument[]
   group?: string
@@ -75,6 +79,7 @@ export interface IVolunteering {
   endDate: string
   cause: string
   description: string
+  logo?: string
   impact: string[]
   tags: string[]
   images: string[]
@@ -86,6 +91,7 @@ export interface IAchievement {
   date: string
   category: string
   description: string
+  logo?: string
   details: string[]
   tags: string[]
   images: string[]
@@ -119,6 +125,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "edu-1",
       school: "Diponegoro University",
+      logo: "/images/logos/undip.png",
       degree: "Bachelor of Naval Architecture",
       field: "Engineering",
       startDate: "2019",
@@ -150,6 +157,7 @@ export const portfolioData: IPortfolioData = {
         {
           id: "vol-1",
           organization: "Code for Social Good",
+          logo: "/images/logos/code-social.png",
           role: "Lead Developer",
           startDate: "2021",
           endDate: "Present",
@@ -168,6 +176,7 @@ export const portfolioData: IPortfolioData = {
         {
           id: "vol-2",
           organization: "Youth Tech Mentorship",
+          logo: "/images/logos/mentorship.png",
           role: "Lead Mentor",
           startDate: "2022",
           endDate: "Present",
@@ -220,6 +229,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "edu-2",
       school: "Senior High School 1",
+      logo: "/images/logos/sma1.png",
       degree: "High School",
       field: "Sciences",
       startDate: "2016",

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { GlassCard } from '@/components/glass-card'
 import { Briefcase, FlaskConical, ExternalLink } from 'lucide-react'
 
+
 export const metadata: Metadata = {
   title: 'Projects | Farell Elghifari Putratama',
   description: 'Business ventures, engineering research, and technical projects',
@@ -107,8 +108,12 @@ const engineeringProjects: ProjectCardProps[] = [
 ]
 
 export default function ProjectsPage() {
+
   return (
-    <div className="relative overflow-hidden min-h-[calc(100vh-80px)]">
+    <div 
+
+      className="animate-fade-in-up relative overflow-hidden min-h-[calc(100vh-80px)]"
+    >
       <section className="px-4 py-30 md:px-6">
         <div className="mx-auto max-w-4xl">
           {/* Header */}
