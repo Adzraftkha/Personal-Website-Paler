@@ -618,7 +618,7 @@ export const portfolioData: IPortfolioData = {
           id: "doc-cert-1-1",
           title: "Certificate",
           type: "pdf",
-          url: "/documents/certifications/cert-1.pdf"
+          url: "/documents/skills/engineer-general/piping-stress-analysis-caesar2/basic-intermediate-level-piping-stress-analysis-using-caesar-2-and-pipe-data-pro.pdf"
         },
       ],
     },
@@ -637,45 +637,45 @@ export const portfolioData: IPortfolioData = {
           id: "doc-cert-2-1",
           title: "Certificate",
           type: "pdf",
-          url: "/documents/certifications/cert-2.pdf"
+          url: "/documents/skills/geothermal/geothermal-power-plant-performance-analysis/geothermal-power-plant-performance-analysis-certificate.pdf"
         },
       ],
     },
     {
       id: "cert-3",
-      title: "Introduction to Ocean and Geothermal Energy",
-      issuer: "Renewable Energy Institute",
-      issueDate: "2023",
-      description: "Foundational course exploring ocean energy resources and geothermal energy conversion technologies.",
-      tags: ["Ocean Energy", "Geothermal", "Renewable Energy"],
-      group: "Engineering & Energy Systems",
-      images: ["/images/certification/cert-3/badge.jpg"],
-      skills: ["Ocean Energy", "Geothermal Energy", "Renewable Technology"],
-      supportingDocuments: [
-        {
-          id: "doc-cert-3-1",
-          title: "Certificate",
-          type: "pdf",
-          url: "/documents/certifications/cert-3.pdf"
-        },
-      ],
-    },
-    {
-      id: "cert-4",
       title: "Fundamentals of Geothermal Energy",
       issuer: "Geological Society",
       issueDate: "2023",
       description: "Core principles of geothermal energy systems, resources, and applications in power generation and heating.",
       tags: ["Geothermal", "Energy Systems", "Fundamentals"],
       group: "Engineering & Energy Systems",
-      images: ["/images/certification/cert-4/badge.jpg"],
+      images: ["/images/certification/cert-3/badge.jpg"],
       skills: ["Geothermal Resources", "Energy Conversion", "Thermal Engineering"],
+      supportingDocuments: [
+        {
+          id: "doc-cert-3-1",
+          title: "Certificate",
+          type: "pdf",
+          url: "/documents/skills/geothermal/geothermal-international-workshop-certificate/certificate-fundamentals-of-geothermal-energy.pdf"
+        },
+      ],
+    },
+    {
+      id: "cert-4",
+      title: "Introduction to Ocean and Geothermal Energy",
+      issuer: "Renewable Energy Institute",
+      issueDate: "2023",
+      description: "Foundational course exploring ocean energy resources and geothermal energy conversion technologies.",
+      tags: ["Ocean Energy", "Geothermal", "Renewable Energy"],
+      group: "Engineering & Energy Systems",
+      images: ["/images/certification/cert-4/badge.jpg"],
+      skills: ["Ocean Energy", "Geothermal Energy", "Renewable Technology"],
       supportingDocuments: [
         {
           id: "doc-cert-4-1",
           title: "Certificate",
           type: "pdf",
-          url: "/documents/certifications/cert-4.pdf"
+          url: "/documents/skills/geothermal/introduction-to-ocean-and-geothermal-energy/introduction-to-ocean-and-geothermal-energy.pdf"
         },
       ],
     },
@@ -694,7 +694,7 @@ export const portfolioData: IPortfolioData = {
           id: "doc-cert-5-1",
           title: "Certificate",
           type: "pdf",
-          url: "/documents/certifications/cert-5.pdf"
+          url: "/documents/skills/oil-and-gas/oil-and-gas-pecialization/oil-and-gas-coursera.pdf"
         },
       ],
     },

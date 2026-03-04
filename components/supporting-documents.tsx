@@ -74,7 +74,8 @@ export function SupportingDocuments({ documents, title = 'Supporting Documents' 
 
       {/* Modal for PDF/Video Viewer */}
       {isModalOpen && selectedDoc && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        onClick={() => setIsModalOpen(false)}>
           <div className="bg-background rounded-lg border border-border max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 border-b border-border">

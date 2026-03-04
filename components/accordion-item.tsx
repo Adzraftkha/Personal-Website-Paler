@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -60,32 +60,48 @@ export function AccordionItem({
   details = [],
   tags = [],
   images = [],
-
   startDate,
   endDate,
   volunteering = [],
   achievements = [],
   skills = [],
-
   supportingDocuments = [],
   isPlaceholder = false,
   expandedPreview = false,
-
   detailLink,
   category,
   variants,
 }: AccordionItemProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
-  const dateRange = startDate && endDate ? `${startDate} - ${endDate}` : null;
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Logika dateRange gabungan yang lebih kuat
+  const dateRange =
+    startDate && endDate
+      ? `${startDate} - ${endDate}`
+      : startDate
+      ? startDate
+      : null;
+
   const currentImage = images[imageIndex] || null;
 
+  // Fitur auto-scroll dari branch main
+  useEffect(() => {
+    if (isExpanded && ref.current) {
+      ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [isExpanded]);
+
+  // Logika carousel
   useEffect(() => {
     if (!isExpanded || images.length <= 1) return;
     const interval = setInterval(() => {
       setImageIndex((prev) => (prev + 1) % images.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, [isExpanded, images.length]);
 
@@ -95,12 +111,12 @@ export function AccordionItem({
       window.location.href = detailLink;
       return;
     }
-
     setIsExpanded(!isExpanded);
   };
 
   return (
     <motion.div
+      ref={ref}
       variants={variants}
       layout
       className="rounded-lg border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/80 cursor-pointer"
@@ -109,8 +125,7 @@ export function AccordionItem({
         onClick={handleHeaderClick}
         className={cn(
           "group w-full px-4 sm:px-6 py-4 text-left hover:bg-primary/5 transition-colors",
-
-          isExpanded && "border-b border-border bg-primary/5",
+          isExpanded && "border-b border-border bg-primary/5"
         )}
       >
         <div className="flex gap-5 w-full items-center">
@@ -130,15 +145,13 @@ export function AccordionItem({
                 <h3
                   className={cn(
                     "font-semibold text-foreground transition-colors",
-
                     isExpanded
                       ? "text-lg sm:text-xl text-primary"
-                      : "text-sm sm:text-base group-hover:text-primary",
+                      : "text-sm sm:text-base group-hover:text-primary"
                   )}
                 >
                   {title}
                 </h3>
-
                 {isPlaceholder && (
                   <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
                     Skeleton
@@ -165,8 +178,7 @@ export function AccordionItem({
               size={20}
               className={cn(
                 "text-foreground/50 flex-shrink-0 transition-all self-start sm:self-center",
-
-                isExpanded ? "rotate-180" : "group-hover:text-foreground/70",
+                isExpanded ? "rotate-180" : "group-hover:text-foreground/70"
               )}
             />
           </div>
@@ -183,8 +195,6 @@ export function AccordionItem({
           >
             <div className="p-6 bg-background/50 grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2 space-y-6">
-                {/* 1. Carousel Image */}
-
                 {currentImage && (
                   <div className="space-y-3">
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-muted">
@@ -195,7 +205,6 @@ export function AccordionItem({
                         className="object-cover"
                       />
                     </div>
-
                     {images.length > 1 && (
                       <div className="flex items-center justify-center gap-2">
                         {images.map((_, index) => (
@@ -209,7 +218,7 @@ export function AccordionItem({
                               "h-2 rounded-full transition-all",
                               index === imageIndex
                                 ? "bg-primary w-8"
-                                : "bg-primary/30 w-2",
+                                : "bg-primary/30 w-2"
                             )}
                           />
                         ))}
@@ -218,26 +227,20 @@ export function AccordionItem({
                   </div>
                 )}
 
-                {/* 2. Overview */}
-
                 <div>
                   <h4 className="text-sm font-semibold text-foreground mb-2">
                     Overview
                   </h4>
-
                   <p className="text-sm text-foreground/80 leading-relaxed">
                     {summary}
                   </p>
                 </div>
-
-                {/* 3. Details */}
 
                 {details.length > 0 && (
                   <div>
                     <h4 className="text-sm font-semibold text-foreground mb-3">
                       Key Points
                     </h4>
-
                     <ul className="space-y-2">
                       {details.map((detail, index) => (
                         <li
@@ -247,15 +250,12 @@ export function AccordionItem({
                           <span className="text-primary font-bold flex-shrink-0">
                             •
                           </span>
-
                           <span>{detail}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 )}
-
-                {/* 4. Tags */}
 
                 {tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
@@ -269,8 +269,6 @@ export function AccordionItem({
                     ))}
                   </div>
                 )}
-
-                {/* 5. Volunteering & Achievements */}
 
                 {volunteering.length > 0 && (
                   <NestedAccordionSection
@@ -302,12 +300,13 @@ export function AccordionItem({
                   />
                 )}
 
-                {/* 6. Skills Section & Blue Circles (yg lo tambahin manual) */}
-
+                {/* Skills Section & Lingkaran Biru (Jaga Kerjaamu) */}
                 {skills.length > 0 && (
                   <>
-                    <SkillsSection skills={skills} certificationTitle={title} />
-
+                    <SkillsSection
+                      skills={skills}
+                      certificationTitle={title}
+                    />
                     <div className="flex gap-3">
                       {[1, 2, 3, 4].map((i) => (
                         <div
@@ -318,8 +317,6 @@ export function AccordionItem({
                     </div>
                   </>
                 )}
-
-                {/* 7. View Details Button */}
 
                 {category && id && (
                   <div className="flex justify-end pt-4 border-t border-foreground/10">
@@ -343,8 +340,6 @@ export function AccordionItem({
                   </div>
                 )}
               </div>
-
-              {/* Sidebar Supporting Docs */}
 
               {supportingDocuments && supportingDocuments.length > 0 && (
                 <div className="lg:col-span-1">
