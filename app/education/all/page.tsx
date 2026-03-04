@@ -4,15 +4,14 @@ import Link from 'next/link'
 import { getCategoryItems } from '@/data/portfolio'
 import { ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { AccordionItem } from '@/components/accordion-item' // Import komponen baru
+import { AccordionItem } from '@/components/accordion-item'
 
-// 1. Variasi animasi untuk Header & Container
 const containerVariants = {
   initial: { opacity: 0 },
   animate: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // Jeda antar elemen biar "meluncur" satu-satu
+      staggerChildren: 0.15,
       delayChildren: 0.1
     }
   }
@@ -33,8 +32,6 @@ export default function EducationAllPage() {
   return (
     <div className="relative overflow-hidden min-h-[calc(100vh-80px)]">
       <section className="px-4 py-16 md:px-6">
-        
-        {/* Master Container Motion */}
         <motion.div 
           initial="initial"
           animate="animate"
@@ -52,7 +49,7 @@ export default function EducationAllPage() {
             </Link>
           </motion.div>
 
-
+          {/* Header */}
           <motion.div variants={fadeInUp} className="mb-12 space-y-4">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance">
               All Education
@@ -65,21 +62,18 @@ export default function EducationAllPage() {
             </p>
           </motion.div>
 
-          {/* Items List - Menggunakan AccordionItem biar ada Logonya */}
+          {/* Items List */}
           <div className="grid gap-6 md:grid-cols-1">
             {items.map((item: any) => (
               <AccordionItem
-                key={item.id}
-                id={item.id}
-                title={item.school}
+                key={`${item.id}-${item.logo}`} 
+                {...item} 
+                title={item.school} 
                 subtitle={`${item.degree} in ${item.field}`}
                 summary={item.description}
-                logo={item.logo} // <--- Pastikan di data/portfolio.ts tiap item ada field 'logo'
-                startDate={item.startDate}
-                endDate={item.endDate}
-                tags={item.tags}
+                logo={item.logo} 
                 category="education"
-                variants={fadeInUp} // Kirim variasi animasi ke tiap baris
+                variants={fadeInUp}
               />
             ))}
           </div>

@@ -101,7 +101,7 @@ export default function LinksPage() {
                 width={112}
                 height={112}
                 className="w-full h-full object-cover"
-                priority
+                
               />
             </div>
 

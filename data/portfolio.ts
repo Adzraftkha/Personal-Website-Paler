@@ -125,7 +125,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "edu-1",
       school: "Diponegoro University",
-      logo: "/images/logos/undip.png",
+      logo: "/logo/diponegoro-university.png", 
       degree: "Bachelor of Naval Architecture",
       field: "Engineering",
       startDate: "2019",
@@ -157,7 +157,7 @@ export const portfolioData: IPortfolioData = {
         {
           id: "vol-1",
           organization: "Code for Social Good",
-          logo: "/images/logos/code-social.png",
+          logo: "/logo/code-social.png",
           role: "Lead Developer",
           startDate: "2021",
           endDate: "Present",
@@ -229,7 +229,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "edu-2",
       school: "Senior High School 1",
-      logo: "/images/logos/sma1.png",
+      logo: "/logo/logo-bem-undip.png",
       degree: "High School",
       field: "Sciences",
       startDate: "2016",
