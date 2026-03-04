@@ -21,7 +21,7 @@ export default function VolunteeringPage() {
 
   if (allVolunteering.length === 0) {
     return (
-      <div className="relative min-h-[calc(100vh-80px)] overflow-hidden bg-background">
+      <div className="relative min-h-[calc(100vh-80px)] overflow-hidden ">
         <div className="flex min-h-[calc(100vh-80px)] flex-col items-center justify-center px-4">
           <h1 className="mb-4 text-4xl font-bold text-foreground">No volunteering yet</h1>
           <p className="mb-8 text-foreground/60">Check back soon!</p>

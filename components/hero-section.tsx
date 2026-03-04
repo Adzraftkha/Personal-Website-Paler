@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { GlassCard } from './glass-card'
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { GlassCard } from "./glass-card";
 
 interface HeroSectionProps {
-  name: string
-  title: string
-  bio: string
-  profileImage: string
+  name: string;
+  title: string;
+  bio: string;
+  profileImage: string;
 }
 
 const containerVariants = {
@@ -21,18 +21,23 @@ const containerVariants = {
       delayChildren: 0.2,
     },
   },
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
-}
+};
 
-export function HeroSection({ name, title, bio, profileImage }: HeroSectionProps) {
+export function HeroSection({
+  name,
+  title,
+  bio,
+  profileImage,
+}: HeroSectionProps) {
   return (
     <motion.section
       className="relative flex items-center justify-center px-4 py-16 md:py-24 min-h-[calc(100vh-80px)]"
@@ -40,26 +45,27 @@ export function HeroSection({ name, title, bio, profileImage }: HeroSectionProps
       initial="hidden"
       animate="visible"
     >
-
-
       <div className="mx-auto max-w-6xl w-full">
         <div className="grid gap-8 md:gap-12 md:grid-cols-2 items-center">
           {/* Text Content */}
-          <motion.div className="flex flex-col justify-center gap-6 order-2 md:order-1" variants={itemVariants}>
+          <motion.div
+            className="flex flex-col justify-center gap-6 order-2 md:order-1"
+            variants={itemVariants}
+          >
             <motion.h1
               className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground text-balance"
               variants={itemVariants}
             >
               {name}
             </motion.h1>
-            
+
             <motion.h2
               className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
               variants={itemVariants}
             >
               {title}
             </motion.h2>
-            
+
             <motion.p
               className="text-base sm:text-lg leading-relaxed text-foreground/80 md:text-lg"
               variants={itemVariants}
@@ -67,9 +73,12 @@ export function HeroSection({ name, title, bio, profileImage }: HeroSectionProps
               {bio}
             </motion.p>
 
-            <motion.div className="flex flex-col sm:flex-row gap-4 pt-4" variants={itemVariants}>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+              variants={itemVariants}
+            >
               <a
-                href="#work"
+                href="/experience"
                 className="rounded-lg bg-primary text-primary-foreground px-8 py-3 font-medium transition-all duration-300 hover:bg-primary/90 text-center sm:text-left"
               >
                 View Work
@@ -88,19 +97,18 @@ export function HeroSection({ name, title, bio, profileImage }: HeroSectionProps
             className="flex items-center justify-center order-1 md:order-2"
             variants={itemVariants}
           >
-            <GlassCard className="relative aspect-square w-full max-w-sm p-0 overflow-hidden">
+            <GlassCard className="relative aspect-[4/5] w-full max-w-sm p-0 overflow-hidden border-border/50">
               <Image
                 src={profileImage}
                 alt={name}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
-                
+                fill // Pake fill biar responsive di dalem aspect-ratio
+                priority
+                className="object-cover object-top transition-transform duration-500 hover:scale-105"
               />
             </GlassCard>
           </motion.div>
         </div>
       </div>
     </motion.section>
-  )
+  );
 }

@@ -229,7 +229,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "edu-2",
       school: "Senior High School 1",
-      logo: "/logo/logo-bem-undip.png",
+      logo: "/logo/logo-sman-1-semarang.png",
       degree: "High School",
       field: "Sciences",
       startDate: "2016",
@@ -333,6 +333,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "exp-1",
       company: "Tech Innovations Inc.",
+      logo: "/logo/logo-bki.png",
       position: "Senior Full Stack Developer",
       startDate: "2023",
       endDate: "Present",
@@ -364,6 +365,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "exp-2",
       company: "Digital Solutions Ltd.",
+      //logo: "/logo/bem-undip.png",
       position: "Full Stack Developer",
       startDate: "2022",
       endDate: "2023",
@@ -472,6 +474,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "org-1",
       name: "JavaScript Community Indonesia",
+      logo: "/logo/logo-dkb.png",
       role: "Core Member & Event Organizer",
       startDate: "2021",
       endDate: "Present",
@@ -606,6 +609,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "cert-1",
       title: "Basic–Intermediate Piping Stress Analysis (CAESAR II & Pipe Data Pro)",
+      logo: "/logo/logo-goto.png",
       issuer: "Engineering Institute",
       issueDate: "2023",
       description: "Comprehensive training in piping stress analysis using industry-standard software for pressure equipment and piping systems.",
@@ -722,6 +726,7 @@ export const portfolioData: IPortfolioData = {
     {
       id: "cert-7",
       title: "Ahli K3 Umum (BNSP)",
+      logo: "/logo/logo-himaspal.png",
       issuer: "Badan Nasional Sertifikasi Profesi",
       issueDate: "2023",
       description: "Indonesian national certification in general occupational safety and health, recognized by BNSP.",

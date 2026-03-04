@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { NestedAccordionSection } from "./nested-accordion-section";
@@ -36,19 +36,21 @@ interface AccordionItemProps {
   logo?: string;
   summary: string;
   details?: string[];
+  responsibilities?: string[]; // Tambahan buat data Organization
   tags?: string[];
   images?: string[];
   startDate?: string;
   endDate?: string;
   volunteering?: VolunteeringItem[];
-  achievements?: AchievementItem[];
+  achievements?: any[]; 
   skills?: string[];
   supportingDocuments?: SupportingDocument[];
   isPlaceholder?: boolean;
-  expandedPreview?: boolean;
   detailLink?: string;
   category?: string;
   variants?: any;
+  isOpen?: boolean;
+  onToggle?: () => void;
 }
 
 export function AccordionItem({
@@ -58,6 +60,7 @@ export function AccordionItem({
   logo,
   summary,
   details = [],
+  responsibilities = [],
   tags = [],
   images = [],
   startDate,
@@ -67,36 +70,36 @@ export function AccordionItem({
   skills = [],
   supportingDocuments = [],
   isPlaceholder = false,
-  expandedPreview = false,
   detailLink,
   category,
   variants,
+  isOpen,
+  onToggle,
 }: AccordionItemProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isExpanded = isOpen !== undefined ? isOpen : internalOpen;
+  const toggle = onToggle || (() => setInternalOpen(!internalOpen));
+
   const [imageIndex, setImageIndex] = useState(0);
+  const [imageError, setImageError] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Logika dateRange gabungan yang lebih kuat
-  const dateRange =
-    startDate && endDate
-      ? `${startDate} - ${endDate}`
-      : startDate
-      ? startDate
-      : null;
-
+  const dateRange = startDate && endDate ? `${startDate} - ${endDate}` : startDate || null;
   const currentImage = images[imageIndex] || null;
 
-  // Fitur auto-scroll dari branch main
+  // Gabungkan semua poin (details, responsibilities, atau achievements non-education)
+  const allKeyPoints = [
+    ...details, 
+    ...responsibilities, 
+    ...(category !== "education" ? achievements : [])
+  ].filter(p => p && (typeof p === 'string' || p.title));
+
   useEffect(() => {
     if (isExpanded && ref.current) {
-      ref.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+      ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [isExpanded]);
 
-  // Logika carousel
   useEffect(() => {
     if (!isExpanded || images.length <= 1) return;
     const interval = setInterval(() => {
@@ -105,15 +108,6 @@ export function AccordionItem({
     return () => clearInterval(interval);
   }, [isExpanded, images.length]);
 
-  const handleHeaderClick = (e: React.MouseEvent) => {
-    if (detailLink && !isExpanded) {
-      e.preventDefault();
-      window.location.href = detailLink;
-      return;
-    }
-    setIsExpanded(!isExpanded);
-  };
-
   return (
     <motion.div
       ref={ref}
@@ -121,227 +115,154 @@ export function AccordionItem({
       layout
       className="rounded-lg border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/80 cursor-pointer"
     >
+      {/* HEADER SECTION */}
       <button
-        onClick={handleHeaderClick}
+        onClick={() => toggle()}
         className={cn(
           "group w-full px-4 sm:px-6 py-4 text-left hover:bg-primary/5 transition-colors",
           isExpanded && "border-b border-border bg-primary/5"
         )}
       >
         <div className="flex gap-5 w-full items-center">
-          {logo ? (
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 overflow-hidden rounded-lg border border-border/50 bg-muted">
-              <Image src={logo} alt={title} fill className="object-cover" />
-            </div>
-          ) : (
-            <div className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
-              {title.charAt(0)}
-            </div>
-          )}
+          <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 overflow-hidden rounded-lg border border-border/50 bg-muted/30 flex items-center justify-center">
+            {logo && !imageError ? (
+              <Image 
+                src={logo} 
+                alt={title} 
+                fill 
+                className="object-contain p-1.5" 
+                onError={() => setImageError(true)} 
+              />
+            ) : (
+              <span className="text-xl sm:text-2xl font-bold text-primary uppercase">
+                {title?.charAt(0)}
+              </span>
+            )}
+          </div>
 
-          <div className="flex w-full flex-col gap-3 sm:gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex w-full flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="flex-1 space-y-1">
-              <div className="flex items-baseline gap-2 flex-wrap">
-                <h3
-                  className={cn(
-                    "font-semibold text-foreground transition-colors",
-                    isExpanded
-                      ? "text-lg sm:text-xl text-primary"
-                      : "text-sm sm:text-base group-hover:text-primary"
-                  )}
-                >
-                  {title}
-                </h3>
-                {isPlaceholder && (
-                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                    Skeleton
-                  </span>
-                )}
-              </div>
-
-              {subtitle && (
-                <p className="text-sm text-primary font-medium">{subtitle}</p>
-              )}
-
-              {dateRange && (
-                <p className="text-xs text-foreground/60">{dateRange}</p>
-              )}
-
-              {!isExpanded && (
-                <p className="text-sm mt-3 text-foreground/70 line-clamp-2">
-                  {summary}
-                </p>
-              )}
+              <h3 className={cn(
+                "font-semibold transition-colors", 
+                isExpanded ? "text-lg sm:text-xl text-primary" : "text-sm sm:text-base group-hover:text-primary"
+              )}>
+                {title}
+              </h3>
+              {subtitle && <p className="text-sm text-primary font-medium">{subtitle}</p>}
+              {dateRange && <p className="text-xs text-foreground/60">{dateRange}</p>}
             </div>
-
-            <ChevronDown
-              size={20}
-              className={cn(
-                "text-foreground/50 flex-shrink-0 transition-all self-start sm:self-center",
-                isExpanded ? "rotate-180" : "group-hover:text-foreground/70"
-              )}
+            <ChevronDown 
+              size={20} 
+              className={cn("text-foreground/50 transition-all", isExpanded && "rotate-180")} 
             />
           </div>
         </div>
       </button>
 
-      <AnimatePresence>
+      {/* EXPANDABLE CONTENT */}
+      <AnimatePresence mode="wait">
         {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+          <motion.div 
+            initial={{ height: 0, opacity: 0, y: 15 }} 
+            animate={{ 
+              height: "auto", 
+              opacity: 1, 
+              y: 0,
+              transition: {
+                height: { duration: 0.3 },
+                opacity: { duration: 0.4, delay: 0.05 },
+                y: { duration: 0.4, ease: "easeOut" }
+              }
+            }} 
+            exit={{ 
+              height: 0, 
+              opacity: 0, 
+              y: 10,
+              transition: { duration: 0.2 } 
+            }}
           >
             <div className="p-6 bg-background/50 grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2 space-y-6">
+                
                 {currentImage && (
-                  <div className="space-y-3">
-                    <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-muted">
-                      <Image
-                        src={currentImage}
-                        alt={title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    {images.length > 1 && (
-                      <div className="flex items-center justify-center gap-2">
-                        {images.map((_, index) => (
-                          <button
-                            key={index}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setImageIndex(index);
-                            }}
-                            className={cn(
-                              "h-2 rounded-full transition-all",
-                              index === imageIndex
-                                ? "bg-primary w-8"
-                                : "bg-primary/30 w-2"
-                            )}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                   <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-muted">
+                      <Image src={currentImage} alt={title} fill className="object-cover" />
+                   </div>
                 )}
 
                 <div>
-                  <h4 className="text-sm font-semibold text-foreground mb-2">
-                    Overview
-                  </h4>
-                  <p className="text-sm text-foreground/80 leading-relaxed">
-                    {summary}
-                  </p>
+                  <h4 className="text-sm font-semibold text-foreground mb-2">Overview</h4>
+                  <p className="text-sm text-foreground/80 leading-relaxed">{summary}</p>
                 </div>
 
-                {details.length > 0 && (
+                {/* KEY POINTS (Render responsibilities/achievements as Bullets) */}
+                {allKeyPoints.length > 0 && (
                   <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-3">
-                      Key Points
-                    </h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-3">Key Points</h4>
                     <ul className="space-y-2">
-                      {details.map((detail, index) => (
-                        <li
-                          key={index}
-                          className="flex gap-3 text-sm text-foreground/80"
-                        >
-                          <span className="text-primary font-bold flex-shrink-0">
-                            •
-                          </span>
-                          <span>{detail}</span>
+                      {allKeyPoints.map((point, idx) => (
+                        <li key={`kp-${idx}`} className="flex gap-3 text-sm text-foreground/80">
+                          <span className="text-primary font-bold flex-shrink-0">•</span>
+                          <span>{typeof point === 'string' ? point : point.title}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 )}
 
-                {tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
+                {/* NESTED SECTION: Volunteering */}
                 {volunteering.length > 0 && (
                   <NestedAccordionSection
                     title="Volunteering"
                     items={volunteering.map((v) => ({
-                      id: v.id,
-                      title: v.organization,
-                      subtitle: v.role,
-                      description: v.description,
-                      details: v.impact,
-                      tags: v.tags,
+                      id: v.id, title: v.organization, subtitle: v.role, description: v.description, details: v.impact, tags: v.tags,
                     }))}
                     variant="volunteering"
                   />
                 )}
 
-                {achievements.length > 0 && (
+                {/* NESTED SECTION: Achievements (ONLY for Education) */}
+                {category === "education" && achievements.length > 0 && (
                   <NestedAccordionSection
                     title="Achievements"
-                    items={achievements.map((a) => ({
-                      id: a.id,
-                      title: a.title,
-                      subtitle: `${a.category} • ${a.date}`,
-                      description: a.description,
-                      details: a.details,
-                      tags: a.tags,
+                    items={achievements.map((a: AchievementItem) => ({
+                      id: a.id, title: a.title, subtitle: `${a.category} • ${a.date}`, description: a.description, details: a.details, tags: a.tags,
                     }))}
                     variant="achievements"
                   />
                 )}
 
-                {/* Skills Section & Lingkaran Biru (Jaga Kerjaamu) */}
-                {skills.length > 0 && (
-                  <>
-                    <SkillsSection
-                      skills={skills}
-                      certificationTitle={title}
-                    />
-                    <div className="flex gap-3">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div
-                          key={i}
-                          className="bg-blue-500 w-10 h-10 rounded-full"
-                        />
+                <div className="space-y-4">
+                  {tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {tags.map((tag) => (
+                        <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                          {tag}
+                        </span>
                       ))}
                     </div>
-                  </>
-                )}
+                  )}
+                  {skills.length > 0 && (
+                    <SkillsSection skills={skills} certificationTitle={title} />
+                  )}
+                </div>
 
-                {category && id && (
-                  <div className="flex justify-end pt-4 border-t border-foreground/10">
-                    <a
-                      href={`/${category}/${id}`}
-                      className="inline-flex items-center gap-2 rounded-lg border border-primary/30 text-primary px-4 py-2 text-sm font-medium transition-all hover:bg-primary/5"
+                {/* ACTION BUTTON */}
+                {(detailLink || (category && id)) && (
+                  <div className="flex justify-end pt-4 border-t border-border/50">
+                    <a 
+                      href={detailLink || `/${category}/${id}`}
+                      target={detailLink?.startsWith('http') ? "_blank" : "_self"}
+                      className="inline-flex items-center gap-2 rounded-lg border border-primary/30 text-primary px-4 py-2 text-sm font-medium transition-all hover:bg-primary/5 hover:border-primary"
                     >
                       View Details
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
+                      <ArrowRight size={16} />
                     </a>
                   </div>
                 )}
               </div>
 
-              {supportingDocuments && supportingDocuments.length > 0 && (
+              {supportingDocuments.length > 0 && (
                 <div className="lg:col-span-1">
                   <SupportingDocuments documents={supportingDocuments} />
                 </div>

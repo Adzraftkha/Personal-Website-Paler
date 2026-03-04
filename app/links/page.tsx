@@ -53,7 +53,7 @@ export default function LinksPage() {
   }
 
   return (
-    <div className="relative overflow-hidden bg-background min-h-screen flex items-center justify-center py-8 px-4">
+    <div className="relative overflow-hidden  min-h-screen flex items-center justify-center py-8 px-4">
       {/* Subtle gradient background */}
       <div className="fixed inset-0 -z-10 overflow-hidden opacity-50">
         <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
