@@ -21,7 +21,7 @@ const categoryDescriptions: { [key: string]: string } = {
   education: 'Academic background and learning journey',
   experience: 'Professional roles and responsibilities',
   organization: 'Community involvement and leadership',
-  certification: 'Professional credentials and qualifications',
+  certification: 'Certifications supporting multidisciplinary development across engineering, energy systems,operations, and technology',
   volunteering: 'Community service and mentorship',
   achievement: 'Awards and recognitions',
 }

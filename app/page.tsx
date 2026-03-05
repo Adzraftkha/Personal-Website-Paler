@@ -56,7 +56,7 @@ export default function Home() {
       id: 'certification',
       category: 'certification',
       title: 'Certifications',
-      description: 'Professional credentials and qualifications',
+      description: 'Certifications supporting multidisciplinary development across engineering, energy systems, operations, and technology',
       count: getCategoryItems('certification').length,
       icon: <Award size={24} />,
     },
